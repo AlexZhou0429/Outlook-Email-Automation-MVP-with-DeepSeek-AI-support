@@ -1,0 +1,175 @@
+mail:
+  intake_folder: "AI Intake"
+  processed_category: "AI Processed"
+  needs_review_category: "AI Draft Ready"
+  max_body_chars: 6000
+
+tracker:
+  path: "ops_email_tracker.csv"
+
+risk_policy:
+  never_auto_send: true
+  require_human_review_for:
+    - "wire_transfer"
+    - "payment_confirmation"
+    - "legal_document"
+    - "investor_facing"
+    - "odd_response"
+    - "subscription_document"
+
+task_types:
+  - id: "investor_onboarding_kyc"
+    name: "Investor Onboarding & KYC"
+    priority_default: 1
+    description: "Collect investor KYC per request list on subscription document, send to Citco, track pending items, follow up with investor, assist with Citco and investor queries."
+    draft_style: "polite, concise, specific missing-item list"
+
+  - id: "investor_subscription"
+    name: "Investor Subscriptions into GCF and CQF"
+    priority_default: 1
+    description: "Fill subscription document, follow up with investor signatures, sight investor funds, confirm payment status, respond to client queries."
+    draft_style: "status-oriented, avoid confirming funds unless explicitly evidenced"
+
+  - id: "sma_portfolio"
+    name: "SMA Portfolio - Sun Zong etc"
+    priority_default: 2
+    description: "Portfolio-related summary, update, or client question for SMA/advisory portfolio."
+    draft_style: "professional, data-aware, avoid unsupported performance claims"
+
+  - id: "board_resolution"
+    name: "GCF - Draft board resolution"
+    priority_default: 2
+    description: "Draft board resolution to approve late subscription, below-minimum amount, or switches."
+    draft_style: "legal-administrative draft, human/legal review required"
+
+  - id: "fund_odd_report"
+    name: "Fund ODD and ODD Reports"
+    priority_default: 2
+    description: "Investor or counterparty operational due diligence request/report."
+    draft_style: "structured answer, cite internal source documents when connected later"
+
+  - id: "ima_fee_excel"
+    name: "Agreement: IMA and update fee excel"
+    priority_default: 2
+    description: "Investment management agreement and fee master/tracker update request."
+    draft_style: "extract terms, do not calculate final fees without deterministic spreadsheet/code"
+
+  - id: "strategic_advisor_distribution_agreement"
+    name: "Agreement: Strategic Advisor / Distribution Agreement"
+    priority_default: 2
+    description: "Agreement drafting, review, or operational follow-up for strategic advisor or distribution agreements."
+    draft_style: "clause checklist, human/legal review required"
+
+  - id: "side_letter"
+    name: "Agreement: Side Letters"
+    priority_default: 2
+    description: "Side letter terms, comparison, MFN, fee, liquidity, reporting, or investor-specific terms."
+    draft_style: "extract and compare terms; human/legal review required"
+
+  - id: "ppm_update"
+    name: "Agreement: PPM update"
+    priority_default: 2
+    description: "Private placement memorandum update or amendment request."
+    draft_style: "identify impacted sections; human/legal review required"
+
+  - id: "portfolio_summary"
+    name: "Automate Portfolio Summary"
+    priority_default: 2
+    description: "Generate or update portfolio summary/report."
+    draft_style: "data-driven, concise commentary"
+
+  - id: "pms_cqf"
+    name: "PMS Management for CQF"
+    priority_default: 1
+    description: "Trade booking, reconciliation against NT/Copper/Ceffu/exchanges/custodians, subscription confirmation, price updates, PMS portfolio report."
+    draft_style: "exception-oriented; calculations must be deterministic"
+
+  - id: "pms_gcf_advisory"
+    name: "PMS Management for GCF & advisory clients"
+    priority_default: 1
+    description: "Trade booking, reconciliation against bank statements, subscription confirmation, price updates, portfolio report generation."
+    draft_style: "exception-oriented; calculations must be deterministic"
+
+  - id: "fund_nav_reconciliation"
+    name: "Fund-level NAV Reconciliation for CQF and GCF"
+    priority_default: 2
+    description: "Reconcile fund-level NAV between admin/PMS/custodian/bank sources."
+    draft_style: "summarize breaks and next actions; calculations must be deterministic"
+
+  - id: "psg_finance_invoice"
+    name: "PSG Finance: Invoice Review and Payment Log"
+    priority_default: 1
+    description: "Invoice review, save in folder, update payment log, update performance file, cash flows, build contract master."
+    draft_style: "approval/checklist style, no payment instruction execution"
+
+  - id: "fund_expenses_loi"
+    name: "GCF & CQF Fund Expenses and LOI"
+    priority_default: 1
+    description: "Invoice review, save in folder, update payment log, create LOI for fund admin to set up wires."
+    draft_style: "LOI draft only; wire/payment human approval required"
+
+  - id: "management_account_review"
+    name: "PSG Management Account Review"
+    priority_default: 2
+    description: "Review monthly management accounts and flag variances or issues."
+    draft_style: "variance-review memo"
+
+  - id: "sgm_statements_collection"
+    name: "SGM Statements Collection"
+    priority_default: 3
+    description: "Collect quarterly SGM statements, update activity log Excel, send to Singapore bookkeeper."
+    draft_style: "simple chaser email"
+
+  - id: "sgc_regulatory_monitoring"
+    name: "SGC Regulatory Monitoring"
+    priority_default: 3
+    description: "Monitor local SG asset >10% of total and total assets < SGD 50m for spending tier."
+    draft_style: "alert summary; calculations must be deterministic"
+
+  - id: "investor_pnl_allocation"
+    name: "Investor-level PnL Allocation"
+    priority_default: 2
+    description: "Investor-level PnL allocation and related explanation."
+    draft_style: "calculation explanation only; allocation math must be deterministic"
+
+  - id: "private_bank_distributor_onboarding"
+    name: "Private Bank / Distributor Onboarding"
+    priority_default: 2
+    description: "Onboarding with private bank or distributor."
+    draft_style: "checklist-driven"
+
+  - id: "psg_odd_response"
+    name: "PSG ODD Response"
+    priority_default: 2
+    description: "Respond to ODD from others for PSG."
+    draft_style: "structured answer; source-backed when connected later"
+
+  - id: "strategic_advisory_fee_calc"
+    name: "Strategic Advisory Fee Calculation"
+    priority_default: 2
+    description: "Strategic advisory fee calculation or invoice preparation."
+    draft_style: "calculation memo; math must be deterministic"
+
+  - id: "cqf_manager_fees_one_token"
+    name: "CQF Manager Fees Review with One Token"
+    priority_default: 2
+    description: "Review CQF manager fees, work with One Token data/API."
+    draft_style: "exception summary; API/calculation code for numbers"
+
+  - id: "crypto_trading_account_opening"
+    name: "Crypto Trading Account Opening"
+    priority_default: 1
+    description: "Trading account opening for crypto counterparties/exchanges/custodians."
+    draft_style: "onboarding checklist; compliance review required"
+
+  - id: "crypto_wire_transfer_setup"
+    name: "Crypto Wire Transfer Setup"
+    priority_default: 1
+    description: "Set up wire transfer for crypto-related account/custodian/exchange."
+    draft_style: "draft/request only; never execute wire automatically"
+
+  - id: "unknown"
+    name: "Unknown / Needs Manual Triage"
+    priority_default: 3
+    description: "Message does not clearly match an operational task."
+    draft_style: "ask concise clarifying question"

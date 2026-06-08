@@ -1,0 +1,22 @@
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# Microsoft login token cache
+.msal_token_cache.json
+
+# Local outputs that may contain email/client data
+ops_email_tracker.csv
+*.log
+input/
+output/
+approval_drafts/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
