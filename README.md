@@ -1,8 +1,9 @@
 # Outlook Email Processing Automation AI MVP — DeepSeek-compatible version
-```text
 
 This project is a lightweight agentic workflow for fund operations email automation. It monitors a designated Outlook folder, classifies emails into operational task types, extracts structured action items, generates draft replies, and updates a local tracker. The system is intentionally human-in-the-loop: it creates drafts but does not automatically send emails.
 
+General Workflow:
+```text
 Outlook / Exchange folder: AI Intake
         ↓
 Microsoft Graph API reads emails
