@@ -2,6 +2,8 @@
 
 This project is a lightweight agentic workflow for fund operations email automation. It monitors a designated Outlook folder, classifies emails into operational task types, extracts structured action items, generates draft replies, and updates a local tracker. The system is intentionally human-in-the-loop: it creates drafts but does not automatically send emails.
 
+It is coded during my internship at Pacific Synergy Group @ HK.
+
 General Workflow:
 ```text
 Outlook / Exchange folder: AI Intake
